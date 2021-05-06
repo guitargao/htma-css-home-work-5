@@ -135,6 +135,16 @@ img {
     margin-right: 2rem;
 }
 
+@media (max-width: 28.75em) {
+    .nav {
+      justify-content: center;
+    }
+  
+    .nav-list {
+      margin: 0 1rem;
+    }
+  }
+
 .nav-list a {
     display: block;
     /* 从操作上来看是区分所有文字，自己独占一行 */
@@ -183,6 +193,13 @@ img {
     border-bottom: 0.2rem solid var(--main-white);
 }
 
+@media (max-width: 28.75em) {
+    .projects-section-header {
+      font-size: 4rem;
+    }
+  }
+  
+
 /* "Automagic" image grid using no media queries */
 
 .project-grid {
@@ -197,6 +214,17 @@ img {
     margin-bottom: 6rem;
 }
 
+@media (max-width: 30.625em) {
+    .projects-section {
+      padding: 6rem 1rem;
+    }
+  
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  
 .project {
     background: var(--main-gray);
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
@@ -273,6 +301,29 @@ img {
     padding: 0 2rem;
     background: var(--main-gray);
 }
+
+.contact-section-header > h2 {
+    font-size: 6rem;
+  }
+  
+  @media (max-width: 28.75em) {
+    .contact-section-header > h2 {
+      font-size: 4rem;
+    }
+  }
+  
+  .contact-section-header > p {
+    font-style: italic;
+  }
+  
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 980px;
+    margin-top: 4rem;
+    flex-wrap: wrap;
+  }
 
 .contact-details {
     font-size: 2.4rem;
