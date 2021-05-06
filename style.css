@@ -1,0 +1,307 @@
+/* custom properties/variables 自定义属性和变量 */
+:root {
+    --main-white: #f0f0f0;
+    --main-red: #be3144;
+    --main-blue: #45567d;
+    --main-gray: #303841;
+    /* 注意颜色一定要写对，要不后面无法添加颜色 */
+}
+/* base reset 基本重制 */
+* {
+    margin: 0;
+    padding: 0;
+}
+/* 通配选择器，为的是给页面上所有元素添加样式 */
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+/* inherit 继承 */
+/* https://developer.mozilla.org/zh-CN/docs/Web/CSS/::before */
+
+html {
+    box-sizing: border-box;
+    /*  告诉浏览器：你想要设置的边框和内边距的值是包含在width内的 */
+    /* Set font size for easy rem calculations
+   * default 默认 document font size = 16px, 1rem = 16px, 100% = 16px
+   * (100% / 16px) * 10 = 62.5%, 1rem = 10px, 62.5% = 10px
+  */
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    /* CSS 属性 scroll-behavior 为一个滚动框指定滚动行为， */    
+}
+/* border-box 告诉浏览器：你想要设置的边框和内边距的值是包含在width内的。也就是说，
+如果你将一个元素的width设为100px，那么这100px会包含它的border和padding，内容区
+的实际宽度是width减去(border + padding)的值。大多数情况下，这使得我们更容易地设
+定一个元素的宽高。    content-box  是默认值。 */
+
+/* A few media query 　媒体查询 to set some font sizes at different screen sizes.
+ * This helps automate a bit of responsiveness 反应性.
+ * The trick is to use the rem unit for size values, margin and padding.
+ * Because rem is relative相对的 to the document font size
+ * when we scale up or down the font size on the document
+ * it will affect 影响all properties 特性 using rem units for the values.
+*/
+
+/* I am using the em unit for breakpoints
+ * The calculation is the following
+ * screen size divided by browser base font size
+ * As an example: a breakpoint at 980px
+ * 980px / 16px = 61.25em
+*/
+
+/* 1200px / 16px = 75em */
+@media (max-width: 75em) {
+  html {
+      font-size: 60%;
+  }
+}
+/* 980px / 16px = 61.25em */
+@media (max-width: 61.25em) {
+    html {
+        font-size: 58%;
+    }
+}
+/* 460px / 16px = 28.75em */
+@media (mac-width: 28.75em) {
+    html {
+        font-size: 55%;
+    }
+}
+
+/* base styles */
+
+body{
+    font-family: "raleway", sans-serif;
+    font-size: 1.8rem;  
+    /* 18px */
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--main-white);
+}
+
+h1,
+h2 {
+    font-family: "raleway", sans-serif;
+    font-weight: 700;
+    text-align: center;
+}
+
+h1{
+    font-size: 6rem;
+}
+h2{
+    font-size: 4.2rem;
+}
+ul{
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--main-white);
+}
+img {
+    display: block;
+    /* 块元素旁边没有文字 */
+    width: 100%;
+}
+
+/* nav */
+
+.nav {
+    display: flex;
+    /* http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html */
+    justify-content: flex-end;
+    /* 在主轴对齐的方式 */
+    position: fixed;
+    /* 银幕滚动时候位置不会改变 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--main-red);
+    box-shadow: 0 2px 0 rgba(0, 0, 0 , 0.4);
+    /* CSS box-shadow 属性用于在元素的框架上添加阴影效果。你可以在同一个元素上
+    设置多个阴影效果，并用逗号将他们分隔开。该属性可设置的值包括阴影的X轴偏移量、
+    Y轴偏移量、模糊半径、扩散半径和颜色。 */
+    z-index: 10;
+    /* 设定了一个定位元素及其后代元素或 flex 项目的 z-order。 当元素之间重叠的
+    时候， z-index 较大的元素会覆盖较小的元素在上层进行显示。 */
+}
+
+.nav-list {
+    display: flex;
+    margin-right: 2rem;
+}
+
+.nav-list a {
+    display: block;
+    /* 从操作上来看是区分所有文字，自己独占一行 */
+    font-size: 2.2em;
+    padding: 2rem;
+    /* 当元素连接起来设好外边距就可以区分开来 */
+}
+
+.nav-list a:hover {
+    background: var(--main-blue);
+}
+
+/* Welcome section */
+
+.welcome-section {
+    display: flex;
+    flex-direction: column;
+    /* 柔性 方向 圆柱树形排列 row 横向排列
+    http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html */
+    justify-content: center;
+    /* 子元素居中对齐 */
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-color: #000;
+    background-image: linear-gradient(62deg, #3a3d40 0%, #181719 100%);
+}
+
+.welcome-section > p {
+    font-size: 3rem;
+    font-weight: 200;
+    font-style: italic;
+    color: var(--main-blue);
+}
+
+/* projects section */
+
+.projects-section {
+    text-align:center;
+    padding: 10rem 2rem;
+    background: var(--main-blue);
+}
+.projects-section-header {
+    max-width: 640px;
+    margin: 0 auto 6rem auto;
+    border-bottom: 0.2rem solid var(--main-white);
+}
+
+/* "Automagic" image grid using no media queries */
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    /* 在grid里面添加多行，写几个值就有几行 */
+    grid-gap: 4rem;
+    /* 为网格添加间距 */
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    margin-bottom: 6rem;
+}
+
+.project {
+    background: var(--main-gray);
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    border-radius: 2px;
+  }
+  
+.code {
+      color: var(--main-gray);
+      transition: color 0.3s ease-out;
+  }
+
+  .project:hover .code {
+      color: #ff7f50
+  }
+  /* 这个命令可以提供悬停效果 */
+
+.project-image {
+    height: cals(100% - 6.8rem);
+    width: 100%;
+    object-fit: cover;
+}
+/*  CSS 属性指定可替换元素的内容应该如何适应到其使用的高度和宽度确定的框。*/
+
+.project-title {
+    font-size: 2rem;
+    padding: 2rem 0.5rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: 2px;
+}
+/* inline-block是元素具备了两种（块级和内联）元素的功能，inline最
+重要的一点就是：元素能够在一行展示，而inline元素所缺失的设置宽高，
+也是block 元素的功能，从而两个联手，展现出了如图的效果。 */
+
+.btn-show-all {
+    font-family: 2rem;
+    background: var(--main-gray);
+    transition: background 0.3s ease-out;
+}
+
+.btn-show-all:hover {
+    background: var(--main-red);
+}
+
+.btn-show-all:hover > i {
+    transform: translateX(2px);
+}
+
+.btn-show-all > i {
+    margin-left: 10px;
+    transform: translateX(0);
+    transition: transform 0.3s ease-out;
+}
+/* translateX()函数表示在二维平面上水平方向移动元素。
+ 其结果的数据类型是<transform-function>。 */
+
+/* Contact section */
+
+.contect-section{
+    display: flex;
+    flex-direction: column;
+    /* 决定主轴的方向，竖向为起点 */
+    justify-content: center;
+    /* 定义在主轴上对齐的方式 */
+    text-align: center;
+    /* text-align CSS属性定义行内内容（例如文字）如何
+    相对它的块父元素对齐。text-align 并不控制块元素自己
+    的对齐，只控制它的行内内容的对齐。 */
+    width: 100%;
+    height: 80vh;
+    padding: 0 2rem;
+    background: var(--main-gray);
+}
+
+.contact-details {
+    font-size: 2.4rem;
+    text-shadow: 2px 2px 1px #1f1f1f;
+    transition: transform 0.3s ease-out;
+}
+
+.contact-details:hover{
+    transform: translateY(8px);
+}
+
+/* footer */
+
+footer {
+    font-weight: 300;
+    display: flex;
+    justify-content: space-evenly;
+    /* 均匀排列每个元素每个元素之间的间隔相等 */
+    padding: 2rem;
+    background: var(--main-gray);
+    border-top: 4px solid var(--main-red);
+}
+
+footer > p {
+    margin: 2rem;
+}
+
+footer i {
+    vertical-align: middle;
+}
+
+/* 用来指定行内元素（inline）或表格单元格（table-cell）元素的垂直对齐方式。 */
